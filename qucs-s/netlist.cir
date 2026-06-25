@@ -1,0 +1,19 @@
+* Qucs 25.1.2  C:/Users/Abdulrahman/OneDrive/Documents/خاص/Roadmap/Projects/s-parameters-calculations-matlab-qucs/qucs-s/rf_filter_sim.sch
+.INCLUDE "C:/Users/Abdulrahman/Downloads/Qucs-S-25.1.2-win64/share/qucs-s/xspice_cmlib/include/ngspice_mathfunc.inc"
+VP1 _net0 0 dc 0 ac 0.632456 SIN(0 0.632456 1MEG) portnum 1 z0 50
+VP2 _net1 0 dc 0 ac 0.632456 SIN(0 0.632456 1MEG) portnum 2 z0 50
+L1 _net0 _net2  39.8N 
+C1 _net2 _net1  0.106P 
+L2 _net1 0  0.265N 
+C2 _net1 0  15.92P 
+
+.control
+
+SP LIN 201 2G 3G
+write spice4qucs.sp1.plot S_1_1 Y_1_1 Z_1_1 S_1_2 Y_1_2 Z_1_2 S_2_1 Y_2_1 Z_2_1 S_2_2 Y_2_2 Z_2_2
+destroy all
+reset
+
+exit
+.endc
+.END
